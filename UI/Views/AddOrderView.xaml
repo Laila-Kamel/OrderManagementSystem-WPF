@@ -1,0 +1,40 @@
+﻿<Page x:Class="UI.Views.AddOrderView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UI.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddOrderView">
+
+    <Grid>
+        <Label Content="Order No: " FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="26,31,0,0" VerticalAlignment="Top"/>
+        <TextBox  Name="txtboxOrderId"  IsReadOnly="True"   FontSize="15" HorizontalAlignment="Left" Height="23" Margin="113,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Date/Time:" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="26,100,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtState" IsReadOnly="True" FontSize="15" HorizontalAlignment="Left" Height="23" Margin="113,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="State:" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="26,66,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtboxDateTime" IsReadOnly="True" FontSize="15" HorizontalAlignment="Left" Height="23" Margin="113,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="TOTAL:" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="638,380,0,0" VerticalAlignment="Top"/>
+        <DataGrid Name="dgOrderListItems" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="193" Margin="10,182,0,0" VerticalAlignment="Top" Width="780" SelectionChanged="dgOrderListItems_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SKU" Binding="{Binding StockItemId}" Width="75"></DataGridTextColumn>
+                <DataGridTextColumn Header="Item" Width="150" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Quantity" Width="120" Binding="{Binding Quantity}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Price" Width="120" Binding="{Binding Price}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Total" Width="120" Binding="{Binding Total}"></DataGridTextColumn>
+                <DataGridTemplateColumn  Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Click="Button_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox Name="txtboxTotal" HorizontalAlignment="Left" IsReadOnly="True" FontSize="15" Height="23" Margin="698,384,0,0" TextWrapping="Wrap" Text="{Binding FinalTotal, Mode=OneWay}"  VerticalAlignment="Top" Width="92"/>
+        <Button Name="btnAddItem" Content="Add Item" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="560,30,0,0" VerticalAlignment="Top" Width="99" Height="28" Click="Button_Click_1"/>
+        <Button Name="btnSubmit" Content="Submit"  FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="560,79,0,0" VerticalAlignment="Top" Width="99" Height="28" Click="Button_Click_3"/>
+        <Button Content="Cancel" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="560,124,0,0" VerticalAlignment="Top" Width="99" Height="28" Click="Button_Click_2"/>
+    </Grid>
+</Page>
